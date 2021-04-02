@@ -1,17 +1,15 @@
+<?php include "header.php"; ?>
 <?php
 require 'functions.php';
 
 //cek apakah tombol submit sudah ditekan apa belum 
 if( isset($_POST["submit"]) ){
-
-
-
         //cek apakah data berhasil ditambahkan atau tidak
         if(tambah($_POST) > 0){
             echo "
                 <script>
                     alert('data berhasil ditambahkan!');
-                    document.location.href = 'index.php';
+                    document.location.href = 'table.php';
                 </script>
             
             ";
@@ -19,7 +17,7 @@ if( isset($_POST["submit"]) ){
             echo "
             <script>
                 alert('data gagal ditambahkan!');
-                document.location.href = 'index.php';
+                document.location.href = 'table.php';
             </script>
             ";
         }
@@ -28,55 +26,90 @@ if( isset($_POST["submit"]) ){
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Data Siswa</title>
-</head>
-<body>
-    <h1>Formulir Pendaftaran Siswa Baru</h1>
+ <!-- Content Wrapper. Contains page content -->
+ <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Form Pendaftaran Siswa Baru
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Forms</a></li>
+        <li class="active">General Elements</li>
+      </ol>
+    </section>
 
-    <form action="" method="post">
-        <ul>
-            <li>
-            <label for="nama">Nama :</label>
-            <input type="text" class="from-control" name="nama" id="nama" placeholder="Nama Lengkap" required>
-            </li><br>
-            <li>
-            <label for="alamat">Alamat :</label>
-            <textarea class="from-control" name="alamat" rows="3" placeholder="Alamat"></textarea>
-            </li>
-            <li>
-            <p>
-                Jenis Kelamin : <select name="jenis_kelamin" class="form-control">
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-8">
+          <!-- general form elements -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Input Data</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+           
+            <form role="form">
+            <form action="" method="post">
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="nama">Nama</label>
+                  <input type="text" class="form-control" id="nama" placeholder="Nama Lengkap" required>
+                </div>
+                <div class="form-group">
+                  <label for="alamat">Alamat</label>
+                  <textarea class="form-control" id="alamat" placeholder="Alamat"></textarea>
+                </div>
+                <div class="form-group">
+                <label for="jenis_kelamin">
+                Jenis Kelamin :</label><select name="jenis_kelamin" class="form-control">
                     <option>Laki - laki</option>
                     <option>Perempuan</option>
                 </select>
-            </p>
-            </li>
-            <li>
-            <p>
-                Agama : <select class="form-control" name="agama">
-                    <option>Islam</option>
-                    <option>Kristen</option>
-                    <option>Khatolik</option>
-                    <option>Hindu</option>
-                    <option>Budha</option>
-            </select></p>
-            </li>
-            <li>
-            <label for="asal_sekolah">Sekolah Asal :</label>
-            <input type="text" class="from-control" name="asal_sekolah" id="asal_sekolah" placeholder="Sekolah Asal" required>
-            </li><br>
-            <li>
-                <button type="submit" name="submit">Tambah Data</button>
-            </li>
-        </ul>
-    
-    
-    </form>
-</body>
-</html>
+                </div>
+                <div class="form-group">
+                    <label for="agama">
+                    Agama :</label> <select class="form-control" name="agama">
+                        <option>Islam</option>
+                        <option>Kristen</option>
+                        <option>Khatolik</option>
+                        <option>Hindu</option>
+                        <option>Budha</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                  <label for="asal_sekolah">Sekolah Asal</label>
+                  <input type="text" class="form-control" id="asal_sekolah" placeholder="Sekolah Asal" required>
+                </div>
+              </div>
+              <!-- /.box-body -->
+
+              <div class="box-footer">
+                <button type="submit" name="submit" class="btn btn-primary">Input</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.box -->   
+          <?php if(isset($_GET['status'])): ?>
+       <p>
+        <?php
+            if($_GET['status'] == 'sukses'){
+                echo "Pendaftaran siswa baru berhasil!";
+            } else {
+                echo "Pendaftaran gagal!";
+            }
+        ?>
+       </p>
+      <?php endif; ?>     
+        </div>
+      
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+ <?php include "footer.php"; ?>

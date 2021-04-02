@@ -13,6 +13,8 @@ function query($query) {
     return $rows;
 }
 
+
+
 function tambah($data){
     global $conn;
         $nama = htmlspecialchars($data["nama"]) ;
@@ -53,8 +55,8 @@ function ubah($data){
      $query = "UPDATE calon_siswa_baru SET
                 nama = '$nama',
                 alamat = '$alamat',
-                jenis_kelamin = '$jenis_kelamin'
-                agama = '$agama'
+                jenis_kelamin = '$jenis_kelamin',
+                agama = '$agama',
                 asal_sekolah = '$asal_sekolah'
                 WHERE id = $id
          ";

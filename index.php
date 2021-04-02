@@ -1,50 +1,110 @@
-<?php
-require 'functions.php';
-$siswa = query ("SELECT * FROM calon_siswa_baru");
-?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pendaftaran Siswa Baru</title>
-</head>
-<body>
 
-    <h1>Data Siswa Baru</h1> 
+  <?php include "header.php"; ?>
+  <!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Dashboard
+        <small>Control panel</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+      </ol>
+    </section>
 
-    <a href="tambah.php">Tambah Data Siswa</a>
-    <br><br>
+    <!-- Main content -->
+  <section class="content">
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3>150</h3>
 
-    <table border="1" cellpadding="10" cellspacing="0">
-        <tr>
-            <th>No.</th>
-            <th>Nama</th>
-            <th>Alamat</th>
-            <th>Jenis Kelamin</th>
-            <th>Agama</th>
-            <th>Sekolah Asal</th>
-            <th>Tindakan</th>
-        </tr>
+              <p>New Orders</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-bag"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>53<sup style="font-size: 20px">%</sup></h3>
 
-        <?php $i = 1; ?>
-        <?php foreach ($siswa as $row ) :?>
-        <tr>
-            <td><?= $i; ?></td>
-            <td><?= $row["nama"]; ?></td>
-            <td><?= $row["alamat"]; ?></td>
-            <td><?= $row["jenis_kelamin"]; ?></td>
-            <td><?= $row["agama"]; ?></td>
-            <td><?= $row["asal_sekolah"]; ?></td>
-            <td>
-                <a href="ubah.php?id=<?= $row["id"]; ?>">Ubah</a> |
-                <a href="hapus.php?id=<?= $row["id"]; ?>" onclick="return confirm('Apakah anda yakin ?');">Hapus</a>
-            </td>
-        </tr>
-        <?php $i++; ?>
-        <?php endforeach;?>
-    </table>   
-</body>
-</html>
+              <p>Bounce Rate</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-stats-bars"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3>44</h3>
+
+              <p>User Registrations</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-person-add"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3>65</h3>
+
+              <p>Unique Visitors</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-pie-graph"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+      </div>
+      <header>
+        <h3>Pendaftaran Siswa Baru</h3>
+        <h1>SMK Coding</h1>
+      </header>
+
+    <h4>Menu</h4>
+    <nav>
+        <ul>
+            <li><a href="tambah.php">Daftar Baru</a></li>
+            <li><a href="table.php">Pendaftar</a></li>
+        </ul>
+    </nav>
+    <!-- <?php if(isset($_GET['status'])): ?>
+       <p>
+        <?php
+            if($_GET['status'] == 'sukses'){
+                echo "Pendaftaran siswa baru berhasil!";
+            } else {
+                echo "Pendaftaran gagal!";
+            }
+        ?>
+       </p>
+      <?php endif; ?> -->
+  </section>
+</div>
+<!-- ./wrapper -->
+
+<?php include "footer.php"; ?>
